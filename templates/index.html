@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OptiCrop - Production Optimization Engine</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">OptiCrop: Smart Agricultural Optimization Engine</h2>
+        <div class="card p-4 shadow-sm">
+            <form action="/predict" method="POST">
+                <div class="row">
+                    <div class="col-md-4 mb-3"><label>Nitrogen (N)</label><input type="number" name="N" class="form-control" required></div>
+                    <div class="col-md-4 mb-3"><label>Phosphorus (P)</label><input type="number" name="P" class="form-control" required></div>
+                    <div class="col-md-4 mb-3"><label>Potassium (K)</label><input type="number" name="K" class="form-control" required></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 mb-3"><label>Temperature (°C)</label><input type="number" step="any" name="temperature" class="form-control" required></div>
+                    <div class="col-md-3 mb-3"><label>Humidity (%)</label><input type="number" step="any" name="humidity" class="form-control" required></div>
+                    <div class="col-md-3 mb-3"><label>pH Level</label><input type="number" step="any" name="ph" class="form-control" required></div>
+                    <div class="col-md-3 mb-3"><label>Rainfall (mm)</label><input type="number" step="any" name="rainfall" class="form-control" required></div>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Optimize & Recommend Crop</button>
+            </form>
+            {% if prediction %}
+            <div class="alert alert-success mt-4 text-center">
+                <h4>Recommended Solution: <strong>{{ prediction }}</strong></h4>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
